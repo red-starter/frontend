@@ -5,6 +5,7 @@ from datetime import datetime
 from joblib import dump, load
 from json import loads,dumps
 import numpy as np
+import pandas as pd
 # configuration
 DEBUG = True
 
@@ -16,9 +17,6 @@ app.config.from_object(__name__)
 CORS(app)
 
 from datetime import datetime, timedelta
-
-# def get_next_hourt(dt):
-# nine_hours_from_now = datetime.now() + timedelta(hours=9)
 
 def get_times(dt):
     weekday = dt.weekday()
@@ -32,21 +30,31 @@ def get_times(dt):
         hour, 
     )
 
+def get_next_week(dt):
+    delta = timedelta(hours=1)   
+    time_range = [get_times(dt)]
+    for _ in range(168):
+        dt += delta
+        time_range.append(get_times(dt))
+    return time_range
+
 def load_model(number):
     filename = "district_"+number+".pkl"
     model = load("models/"+filename) 
     return model
 
+def create_df(rows):
+    columns = ['Assault', 'Battery', 'Burglary', 'Concealed carry license violation', 'Crime sexual assault', 'Criminal damage', 'Criminal trespass', 'Deceptive practice', 'Gambling', 'Homicide', 'Human trafficking', 'Interference with public officer', 'Intimidation', 'Kidnapping', 'Liquor law violation', 'Motor vehicle theft', 'Narcotics', 'Non-criminal', 'Non-criminal (subject specified)', 'Obscenity', 'Offense involving children', 'Other narcotic violation', 'Other offense', 'Prostitution', 'Public indecency', 'Public peace violation', 'Robbery', 'Sex offense', 'Stalking', 'Theft', 'Weapons violation']
+    df = pd.DataFrame(rows, columns = columns)
+    return df 
+
 def get_model_prediction_for_district(number,dt):
     model = load_model(number)
-    weekday, dayofyear, week, hour = get_times(dt)
-    array = np.array([[weekday,dayofyear,week,hour]])
-    pred = model.predict(array)
-    singlepred = list(pred[0])
-    columns = ['Assault', 'Battery', 'Burglary', 'Concealed carry license violation', 'Crime sexual assault', 'Criminal damage', 'Criminal trespass', 'Deceptive practice', 'Gambling', 'Homicide', 'Human trafficking', 'Interference with public officer', 'Intimidation', 'Kidnapping', 'Liquor law violation', 'Motor vehicle theft', 'Narcotics', 'Non-criminal', 'Non-criminal (subject specified)', 'Obscenity', 'Offense involving children', 'Other narcotic violation', 'Other offense', 'Prostitution', 'Public indecency', 'Public peace violation', 'Robbery', 'Sex offense', 'Stalking', 'Theft', 'Weapons violation']
-    resp = [{"name": name, "number": value} for name, value in zip(columns, singlepred)]
-    resp = sorted(resp, key=lambda x : x["number"], reverse=True)
-    return resp
+    time_ranges = get_next_week(dt)
+    predictions = model.predict(time_ranges)    
+    df = create_df(predictions)
+    records = df.to_json(orient='records')
+    return records
 
 # sanity check route
 @app.route('/ping', methods=['GET'])
