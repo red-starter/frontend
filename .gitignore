@@ -3,7 +3,7 @@ node_modules
 /dist
 
 # big models
-/backends/models
+/backend/models
 
 # local env files
 .env.local
