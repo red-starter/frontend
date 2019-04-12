@@ -14,7 +14,7 @@
     </p>
     <h2>Description</h2>
       <v-container>
-      <div>I applied machine learning techniques to explore crime in Chicago. Chicago is a leading cities in homicides, having more than quadruple the amount of crimes than NYC. Can I get insight into what are the causes of crimes? What are the indicators of future crimes. One of the great thing about this project is that the data is constantly updated and well structured.</div>
+      <div>I applied machine learning techniques to explore crime in Chicago. Chicago is a leading city in homicides, having more than quadruple the amount of crimes than NYC. </div>
       </v-container>
     <h2>Data Source</h2>
       <a href="https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2" target="_blank">The data come for crimes in chicago 2001 - 2018 </a>
