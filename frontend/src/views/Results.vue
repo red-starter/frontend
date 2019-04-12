@@ -1,10 +1,10 @@
 <template>
   <div>
     <h1>
-      <img alt="knife logo" height="100px" src="../assets/knife.svg">
+      <knifeline/>
         <h4>Predicted crimes for {{district.number}} {{district.name}} District </h4>
         <h4>on date: {{date}} at time: {{time}}</h4>
-      <img alt="knife logo" height="100px" src="../assets/cleaver-knife.svg">
+      <knifeline/>     
     </h1>
     <v-container>
     <v-data-table
@@ -23,8 +23,10 @@
 </template>
 
 <script>
+  import knifeline from '../components/knifeline.vue' 
   export default {
     name: "Results",
+    components: {knifeline},
     props: ['time','date','district','data'],
     data () {
       return {

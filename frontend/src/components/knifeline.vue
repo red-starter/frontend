@@ -1,0 +1,50 @@
+<template>
+    <div>
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/cleaver-knife.svg">
+        <img alt="knife logo" height="20px" src="../assets/knife.svg">
+    </div>
+</template>
