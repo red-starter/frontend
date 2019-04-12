@@ -15,8 +15,9 @@ export default new Router({
     },
     {
       path: '/results',
-      name: 'result',
-      component: Results
+      name: 'results',
+      component: Results,
+      props: true
     },
     {
       path: '/chicago',

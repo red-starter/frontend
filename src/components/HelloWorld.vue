@@ -8,7 +8,7 @@
     </h1>
     
     <p>
-      For your person guide to traveling dangerous cities<br>
+      Your personal guide to traveling dangerous cities<br>
       <!-- this will be link to github -->
       <!-- <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>. -->
     </p>

@@ -8,7 +8,7 @@
     <v-container fluid>
     <v-layout>
       <v-flex xs4>
-      <v-date-picker :disabledDates="disabledDates" v-model="datePicker" :landscape="landscape" :reactive="reactive"></v-date-picker>
+      <v-date-picker v-model="datePicker" :landscape="landscape" :reactive="reactive"></v-date-picker>
       </v-flex>
       <v-flex xs4>
       <v-time-picker v-model="timePicker" :landscape="landscape"></v-time-picker>
@@ -121,7 +121,8 @@ methods: {
   },
   handleDisagree(){
     this.agreed=false
-    setTimeout(() => this.$router.push('results'), 2000)
+    const params = {date: this.datePicker, time:this.timePicker, district: this.select}
+    setTimeout(() => this.$router.push({path: "/results", name : "results" ,params: params}), 2000)
   }
 
 },
