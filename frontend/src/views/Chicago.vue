@@ -72,66 +72,79 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-name: 'Chicago',
-// props: {
-//   msg: String
-// }
-data () {
-return {
-  dialog: false,
-  isLoading: false,
-  agreed: true,
-  select: null,
-  landscape: false,
-  datePicker: new Date().toISOString().substr(0, 10),
-  timePicker: null,
-  reactive: false,
-  select: {name: 'Central' , number: '1st'}, 
-  items: [
-    {name: 'Central' , number: '1st'}, 
-    {name: 'Wentworth' , number: '2nd'}, 
-    {name: 'Grand Crossing' , number: '3rd'}, 
-    {name: 'South Chicago' , number: '4th'}, 
-    {name: 'Calumet' , number: '5th'}, 
-    {name: 'Gresham' , number: '6th'}, 
-    {name: 'Englewood' , number: '7th'}, 
-    {name: 'Chicago Lawn' , number: '8th'}, 
-    {name: 'Deering' , number: '9th'}, 
-    {name: 'Ogden' , number: '10th'}, 
-    {name: 'Harrison' , number: '11th'}, 
-    {name: 'Near West' , number: '12th'}, 
-    {name: 'Shakespeare' , number: '14th'}, 
-    {name: 'Austin' , number: '15th'}, 
-    {name: 'Jefferson Park' , number: '16th'}, 
-    {name: 'Albany Park' , number: '17th'}, 
-    {name: 'Near North' , number: '18th'}, 
-    {name: 'Town Hall' , number: '19th'}, 
-    {name: 'Lincoln' , number: '20th'}, 
-    {name: 'Morgan Park' , number: '22nd'}, 
-    {name: 'Rogers Park' , number: '24th'}, 
-    {name: 'Grand Central' , number: '25th'}, 
-  ]
-}
-},
-methods: {
-  calculate(){
-    this.isLoading = true
-    this.dialog = true
-  },
-  handleDisagree(){
-    this.agreed=false
-    const params = {date: this.datePicker, time:this.timePicker, district: this.select}
-    setTimeout(() => this.$router.push({path: "/results", name : "results" ,params: params}), 2000)
+  name: 'Chicago',
+  // props: {
+  //   msg: String
+  // }
+  data () {
+  return {
+    dialog: false,
+    isLoading: false,
+    agreed: true,
+    select: null,
+    landscape: false,
+    datePicker: new Date().toISOString().substr(0, 10),
+    timePicker: null,
+    reactive: false,
+    select: {name: 'Central' , number: '1st'}, 
+    items: [
+      {name: 'Central' , number: '1st'}, 
+      {name: 'Wentworth' , number: '2nd'}, 
+      {name: 'Grand Crossing' , number: '3rd'}, 
+      {name: 'South Chicago' , number: '4th'}, 
+      {name: 'Calumet' , number: '5th'}, 
+      {name: 'Gresham' , number: '6th'}, 
+      {name: 'Englewood' , number: '7th'}, 
+      {name: 'Chicago Lawn' , number: '8th'}, 
+      {name: 'Deering' , number: '9th'}, 
+      {name: 'Ogden' , number: '10th'}, 
+      {name: 'Harrison' , number: '11th'}, 
+      {name: 'Near West' , number: '12th'}, 
+      {name: 'Shakespeare' , number: '14th'}, 
+      {name: 'Austin' , number: '15th'}, 
+      {name: 'Jefferson Park' , number: '16th'}, 
+      {name: 'Albany Park' , number: '17th'}, 
+      {name: 'Near North' , number: '18th'}, 
+      {name: 'Town Hall' , number: '19th'}, 
+      {name: 'Lincoln' , number: '20th'}, 
+      {name: 'Morgan Park' , number: '22nd'}, 
+      {name: 'Rogers Park' , number: '24th'}, 
+      {name: 'Grand Central' , number: '25th'}, 
+    ]
   }
-
-},
-computed: {
-  buttonText(){
-    return this.isLoading ? 'loading ... ' : "Get Survival Odds"
   },
+  methods: {
+    calculate(){
+      this.isLoading = true
+      this.dialog = true
+    },
+    handleDisagree(){
+      this.agreed=false
+      const params = {date: this.datePicker, time:this.timePicker, district: this.select}
+      this.getResults()
+      setTimeout(() => this.$router.push({path: "/results", name : "results" ,params: params}), 500)
+    },
+    getResults(){
+      const response = axios.get('http://localhost:5000/api/1/models', {
+        params: {
+          date: this.datePicker,
+          time: this.timePicker,
+          district: this.select, 
+        }
+      });
+      console.log(response)
+    }
 
-},
+  },
+  computed: {
+    buttonText(){
+      return this.isLoading ? 'loading ... ' : "Get Survival Odds"
+    },
+
+  },
 }
 
 </script>
