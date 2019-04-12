@@ -124,10 +124,9 @@ export default {
     handleDisagree(){
       this.agreed=false
       const params = {date: this.datePicker, time:this.timePicker, district: this.select}
-      this.getResults()
-      setTimeout(() => this.$router.push({path: "/results", name : "results" ,params: params}), 500)
+      this.getResults(params)
     },
-    getResults(){
+    getResults(params){
       axios.get('http://localhost:5000/api/1/models', {
         params: {
           date: this.datePicker,
@@ -135,7 +134,9 @@ export default {
           district: parseInt(this.select.number), 
         }
       }).then(data => {
-        console.log(data)
+        console.log(data.data)
+        
+        this.$router.push({path: "/results", name : "results" ,params: {...params, data: data.data}})
       });
       
     }
