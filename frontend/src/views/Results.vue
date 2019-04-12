@@ -153,24 +153,24 @@
       formatHourDate(d) {
         var amOrPm = (d.getHours() < 12) ? "AM" : "PM";
         var hour = (d.getHours() < 12) ? d.getHours() : d.getHours() - 12;
-        return   d.getDate() + ' / ' + d.getMonth() + ' / ' + ' ' + hour + amOrPm;
+        return  hour + amOrPm;
       },
       next24hours() {
         const result = []
+        const d = new Date(this.date);
+        const hours = this.time.split(':')[0]
+        d.setHours(hours);
         for (let i = 1  ; i <= 25; i++) {
-          const hours = this.time.split(':')[0]
-          const d = new Date(this.date);
-          d.setHours(d.getHours() + hours);
-          d.setHours(d.getHours() + i);
+          d.setHours(d.getHours() + 1);
           result.push(this.formatHourDate(d))
         }
         return result
       },
       next7Days() {
         const result = []
-        for (let i = 1  ; i < 9; i++) {
-          const d = new Date(this.date);
-          d.setDate(d.getDate() + i);
+        const d = new Date(this.date);
+        for (let i = 0  ; i < 8; i++) {
+          d.setDate(d.getDate() + 1);
           result.push(this.formatDate(d))
         }
         return result
