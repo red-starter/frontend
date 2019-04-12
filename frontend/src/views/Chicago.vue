@@ -87,7 +87,7 @@ export default {
     select: null,
     landscape: false,
     datePicker: new Date().toISOString().substr(0, 10),
-    timePicker: null,
+    timePicker: '11:59',
     reactive: false,
     select: {name: 'Central' , number: '1st'}, 
     items: [
@@ -128,14 +128,16 @@ export default {
       setTimeout(() => this.$router.push({path: "/results", name : "results" ,params: params}), 500)
     },
     getResults(){
-      const response = axios.get('http://localhost:5000/api/1/models', {
+      axios.get('http://localhost:5000/api/1/models', {
         params: {
           date: this.datePicker,
           time: this.timePicker,
-          district: this.select, 
+          district: parseInt(this.select.number), 
         }
+      }).then(data => {
+        console.log(data)
       });
-      console.log(response)
+      
     }
 
   },
